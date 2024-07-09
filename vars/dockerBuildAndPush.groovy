@@ -2,7 +2,7 @@ def call(String dockerImage, String dockerImageTag, String dockerFilePath, Strin
     def imageName= "${dockerImage}:${dockerImageTag}"
     echo "IMAGE:${imageName}"
     def buildImage= docker.build(imageName,"-f ${dockerFilePath}")
-    docker.withRegistry('',registryCredentialsid){
+    docker.withRegistry('', registryCredentialsid){
         buildImage.push()
     }
 }
